@@ -1,11 +1,9 @@
 import Expo from 'expo';
-import React from 'react';
+import { StackNavigator } from 'react-navigation';
 
 import SplashScreen from './screens/splash-screen';
 import AuthScreen from './screens/auth-screen';
 import MainScreen from './screens/main-screen';
-
-import { StackNavigator } from 'react-navigation';
 
 const App = StackNavigator(
   {
@@ -20,11 +18,5 @@ const App = StackNavigator(
     },
   },
 );
-//
-// const BasicApp = StackNavigator({
-//   Login: { screen: LoginScreen },
-//   Main: { screen: MainScreen },
-//   Profile: { screen: ProfileScreen },
-// });
 
 Expo.registerRootComponent(App);

@@ -5,7 +5,6 @@ import { Icon } from 'react-native-elements';
 class SplashScreen extends Component {
   constructor(props) {
     super(props);
-    console.log(props);
 
     this.state = {
       counter: 10,
@@ -19,7 +18,6 @@ class SplashScreen extends Component {
   }
 
   tick() {
-    console.log('tick tock', this.state.counter);
     if (this.state.counter > 1) {
       this.setState({ counter: this.state.counter - 1 });
     } else {

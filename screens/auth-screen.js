@@ -25,13 +25,13 @@ import Expo from 'expo';
 //   }
 // });
 
-class AuthScreen extends React.Component {
+
+class AuthScreen extends Component {
   static navigationOptions = {
     title: 'Login',
   };
 
   logIn = async () => {
-    console.log('Processing login');
     const {
       type,
       token,
