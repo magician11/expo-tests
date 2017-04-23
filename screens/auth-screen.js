@@ -25,7 +25,6 @@ import Expo from 'expo';
 //   }
 // });
 
-
 class AuthScreen extends Component {
   static navigationOptions = {
     title: 'Login',
@@ -38,18 +37,28 @@ class AuthScreen extends Component {
     } = await Expo.Facebook.logInWithReadPermissionsAsync('903647429646348', {
       permissions: ['public_profile'],
     });
-    if (type === 'success') {
-      const response = await fetch(
-        `https://graph.facebook.com/me?access_token=${token}`,
-      );
 
-      const userDetails = await response.json();
-      this.props.navigation.navigate('MainScreen', {
-        name: userDetails.first_name,
-      });
+    console.log('todo: add spinner to show we are logging in');
+
+    if (type === 'success') {
+      try {
+        const response = await fetch(
+          `https://graph.facebook.com/me?access_token=${token}`,
+        );
+
+        const userDetails = await response.json();
+        // console.log(userDetails);
+        this.props.navigation.navigate('MainScreen', {
+          name: userDetails.first_name,
+          email: userDetails.email,
+        });
+      } catch (err) {
+        console.error(err);
+      }
       // console.log(name);
       // const credential = firebase.auth.FacebookAuthProvider.credential(token);
       // firebase.auth().signInWithCredential(credential);
+      console.log('todo: add FB token to Firebase');
     }
   };
 

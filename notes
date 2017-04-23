@@ -1,0 +1,15 @@
+tutorials to check out
+
+https://github.com/jlebensold/peckish together with the description here https://medium.com/@jonlebensold/getting-started-with-react-native-redux-2b01408c0053
+
+https://github.com/alinz/example-react-native-redux
+
+Monitoring Auth state with Firebase https://firebase.google.com/docs/auth/web/manage-users
+
+Authenticated users are logged https://console.firebase.google.com/project/testing-with-expo/authentication/users
+
+react-native-elements icons are https://material.io/icons/
+
+React Navigation docs https://reactnavigation.org/docs/intro/
+
+Discussion on having a splash screen, auth page and main page: https://github.com/react-community/react-navigation/issues/156

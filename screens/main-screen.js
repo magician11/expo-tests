@@ -14,6 +14,9 @@ class MainScreen extends Component {
         <Text style={styles.text}>
           Welcome {this.props.navigation.state.params.name}
         </Text>
+        <Text>
+          {this.props.navigation.state.params.email}
+        </Text>
       </View>
     );
   }

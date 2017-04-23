@@ -7,7 +7,7 @@ class SplashScreen extends Component {
     super(props);
 
     this.state = {
-      counter: 10,
+      counter: 3,
     };
 
     this.tick = this.tick.bind(this);

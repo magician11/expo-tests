@@ -1,22 +1,25 @@
 import Expo from 'expo';
-import { StackNavigator } from 'react-navigation';
+import React from 'react';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
+import thunkMiddleware from 'redux-thunk';
+import { createLogger } from 'redux-logger';
 
-import SplashScreen from './screens/splash-screen';
-import AuthScreen from './screens/auth-screen';
-import MainScreen from './screens/main-screen';
+import TestApp from './containers';
+import reducer from './reducers';
 
-const App = StackNavigator(
-  {
-    SplashScreen: { screen: SplashScreen },
-    AuthScreen: { screen: AuthScreen },
-    MainScreen: { screen: MainScreen },
-  },
-  {
-    headerMode: 'screen',
-    navigationOptions: {
-      header: { visible: false },
-    },
-  },
-);
+const loggerMiddleware = createLogger({
+  predicate: (getState, action) => __DEV__,
+});
+
+const configureStore = initialState => {
+  const enhancer = compose(applyMiddleware(thunkMiddleware, loggerMiddleware));
+
+  return createStore(reducer, initialState, enhancer);
+};
+
+const store = configureStore({});
+
+const App = () => <Provider store={store}><TestApp /></Provider>;
 
 Expo.registerRootComponent(App);

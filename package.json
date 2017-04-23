@@ -13,7 +13,10 @@
     "react-native": "https://github.com/exponent/react-native/archive/sdk-15.0.0.tar.gz",
     "react-native-elements": "^0.11.1",
     "react-navigation": "^1.0.0-beta.7",
-    "redux": "^3.6.0"
+    "react-redux": "^5.0.4",
+    "redux": "^3.6.0",
+    "redux-logger": "^3.0.1",
+    "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
     "eslint": "^3.19.0",
