@@ -1,10 +1,10 @@
 import { StackNavigator } from 'react-navigation';
 
-import SplashScreen from '../screens/splash-screen';
-import AuthScreen from '../screens/auth-screen';
-import MainScreen from '../screens/main-screen';
+import SplashScreen from '../containers/splash-screen';
+import AuthScreen from '../containers/auth-screen';
+import MainScreen from '../containers/main-screen';
 
-const App = StackNavigator(
+const AppRoot = StackNavigator(
   {
     SplashScreen: { screen: SplashScreen },
     AuthScreen: { screen: AuthScreen },
@@ -18,4 +18,4 @@ const App = StackNavigator(
   },
 );
 
-export default App;
+export default AppRoot;
