@@ -20,7 +20,9 @@ const configureStore = initialState => {
 };
 
 const store = configureStore({});
-store.dispatch(ActionCreators.verifyAuth());
+setTimeout(() => {
+  store.dispatch(ActionCreators.verifyAuth());
+}, 3000);
 
 const App = () => <Provider store={store}><AppRoot /></Provider>;
 

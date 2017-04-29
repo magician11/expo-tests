@@ -1,6 +1,6 @@
 import firebase from 'firebase';
 import Expo from 'expo';
-import { AUTH_USER, SIGN_OUT_USER, LOGGING_IN } from './types';
+import { AUTH_USER, SIGN_OUT_USER } from './types';
 
 // Initialize Firebase
 const config = {
@@ -13,11 +13,9 @@ const config = {
 };
 
 firebase.initializeApp(config);
-console.log('Initialised Firebase');
 
 export const login = () => {
   return async dispatch => {
-    dispatch({type: LOGGING_IN});
     const {
       type,
       token,
@@ -31,19 +29,18 @@ export const login = () => {
 };
 
 export const logout = () => {
-  console.log('calling logout method');
-  firebase.auth().signOut();
+  return dispatch => {
+    firebase.auth().signOut();
+    dispatch({ type: SIGN_OUT_USER });
+  };
 };
 
 export const verifyAuth = () => {
   return dispatch => {
     firebase.auth().onAuthStateChanged(user => {
-      console.log('auth was changed...');
       if (user) {
-        console.log('user logged in');
         dispatch({ type: AUTH_USER, user });
       } else {
-        console.log('user logged out');
         dispatch({ type: SIGN_OUT_USER });
       }
     });

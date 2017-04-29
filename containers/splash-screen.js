@@ -6,10 +6,8 @@ import { Icon } from 'react-native-elements';
 class SplashScreen extends Component {
   componentDidUpdate() {
     if (this.props.loggedIn) {
-      console.log('Navigating to Main Screen');
       this.props.navigation.navigate('MainScreen');
     } else {
-      console.log('Navigating to Auth Screen');
       this.props.navigation.navigate('AuthScreen');
     }
   }
