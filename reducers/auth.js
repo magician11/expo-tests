@@ -1,6 +1,6 @@
 import { AUTH_USER, SIGN_OUT_USER } from '../actions/types';
 
-const login = (state = {}, action) => {
+const login = (state = { isLoggedIn: false }, action) => {
   switch (action.type) {
     case AUTH_USER:
       return {

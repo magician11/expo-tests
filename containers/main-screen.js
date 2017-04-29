@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { StyleSheet, View, Text } from 'react-native';
 import { Icon, Button } from 'react-native-elements';
@@ -15,33 +15,31 @@ const styles = StyleSheet.create({
   },
 });
 
-class MainScreen extends Component {
+const MainScreen = props => (
+  <View style={styles.container}>
+    <Icon name="face" size={88} />
+    <Text style={styles.text}>
+      {props.user.displayName}
+    </Text>
+    <Text>
+      {props.user.email}
+    </Text>
+    <Button
+      raised
+      icon={{ name: 'motorcycle' }}
+      backgroundColor="#8E4585"
+      style={{ marginTop: 33 }}
+      onPress={props.logout}
+      title="Logout"
+    />
+  </View>
+);
 
-  render() {
-    return (
-      <View style={styles.container}>
-        <Icon name="face" size={88} />
-        <Text style={styles.text}>
-          {this.props.user.displayName}
-        </Text>
-        <Text>
-          {this.props.user.email}
-        </Text>
-        <Button
-          raised
-          icon={{ name: 'motorcycle' }}
-          backgroundColor="#8E4585"
-          style={{ marginTop: 33 }}
-          onPress={this.props.logout}
-          title="Logout"
-        />
-      </View>
-    );
-  }
-}
+const mapStateToProps = state => ({ user: state.auth.user });
 
-const mapStateToProps = state => {
-  return { user: state.auth.user };
+MainScreen.propTypes = {
+  user: React.PropTypes.object.isRequired,
+  logout: React.PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, ActionCreators)(MainScreen);
