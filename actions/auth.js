@@ -15,29 +15,37 @@ const config = {
 firebase.initializeApp(config);
 
 export const login = () => {
-  return async dispatch => {
-    const {
-      type,
-      token,
-    } = await Expo.Facebook.logInWithReadPermissionsAsync('903647429646348', {
-      permissions: ['public_profile'],
-    });
-
-    const credential = firebase.auth.FacebookAuthProvider.credential(token);
-    firebase.auth().signInWithCredential(credential);
+  return (dispatch) => {
+    Expo.Facebook
+      .logInWithReadPermissionsAsync('903647429646348', {
+        permissions: ['public_profile'],
+      })
+      .then((result) => {
+        const credential = firebase.auth.FacebookAuthProvider.credential(
+          result.token,
+        );
+        firebase
+          .auth()
+          .signInWithCredential(credential)
+          .then(user => dispatch({ type: AUTH_USER, user }));
+      })
+      .catch((err) => {
+        console.log('Error with logging in..');
+        console.log(err);
+      });
   };
 };
 
 export const logout = () => {
-  return dispatch => {
+  return (dispatch) => {
     firebase.auth().signOut();
     dispatch({ type: SIGN_OUT_USER });
   };
 };
 
 export const verifyAuth = () => {
-  return dispatch => {
-    firebase.auth().onAuthStateChanged(user => {
+  return (dispatch) => {
+    firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         dispatch({ type: AUTH_USER, user });
       } else {

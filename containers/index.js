@@ -24,12 +24,17 @@ const AppRoot = StackNavigator(
 
 class App extends Component {
   componentDidMount() {
+    this.props.verifyAuth();
     setTimeout(() => {
-      this.props.verifyAuth();
+      this.routeOnAuth();
     }, 3000);
   }
 
   componentDidUpdate() {
+    this.routeOnAuth();
+  }
+
+  routeOnAuth() {
     const navigateTo = (routeName) => {
       const actionToDispatch = NavigationActions.reset({
         index: 0,

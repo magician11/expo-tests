@@ -3141,9 +3141,9 @@ react-native-drawer-layout@~1.1.5:
   dependencies:
     react-native-dismiss-keyboard "1.0.0"
 
-react-native-elements@^0.11.1:
-  version "0.11.1"
-  resolved "https://registry.yarnpkg.com/react-native-elements/-/react-native-elements-0.11.1.tgz#addb3a145a9de3ba041269bb8985c88bb840d015"
+react-native-elements@^0.11.2:
+  version "0.11.2"
+  resolved "https://registry.yarnpkg.com/react-native-elements/-/react-native-elements-0.11.2.tgz#441b26d1a3102eb11abd0dbf24e291b3eb630e56"
   dependencies:
     react-native-side-menu "^0.20.1"
     react-native-tab-navigator "^0.3.3"

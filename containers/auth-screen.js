@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import { SocialIcon } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { ActionCreators } from '../actions';
@@ -8,8 +8,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
+    padding: 33,
   },
-  text: {
+  heading: {
+    marginBottom: 33,
     fontSize: 33,
     textAlign: 'center',
   },
@@ -17,7 +19,7 @@ const styles = StyleSheet.create({
 
 const AuthScreen = props => (
   <View style={styles.container}>
-    <Text style={styles.text}>Please Login</Text>
+    <Text style={styles.heading}>Please Login</Text>
     <SocialIcon
       title="Sign In With Facebook"
       button

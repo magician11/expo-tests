@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
 
 const SplashScreen = () => (
   <View style={styles.container}>
-    <Icon name="computer" size={111} />
+    <Icon name="laptop" size={111} />
     <Text style={styles.heading}>initialising awesomeness...</Text>
     <ActivityIndicator size="large" />
   </View>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { StyleSheet, View, Text } from 'react-native';
-import { Icon, Button } from 'react-native-elements';
+import { StyleSheet, View } from 'react-native';
+import { Card, Text, Button } from 'react-native-elements';
 import { ActionCreators } from '../actions';
 
 const styles = StyleSheet.create({
@@ -9,29 +9,18 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  text: {
-    fontSize: 33,
+    padding: 33,
   },
 });
 
 const MainScreen = props => (
   <View style={styles.container}>
-    <Icon name="face" size={88} />
-    <Text style={styles.text}>
-      {props.user.displayName}
-    </Text>
-    <Text>
-      {props.user.email}
-    </Text>
-    <Button
-      raised
-      icon={{ name: 'motorcycle' }}
-      backgroundColor="#8E4585"
-      style={{ marginTop: 33 }}
-      onPress={props.logout}
-      title="Logout"
-    />
+    <Card title={props.user.displayName} image={{ uri: props.user.photoURL }}>
+      <Text style={{ marginBottom: 10 }}>
+        {props.user.email}
+      </Text>
+      <Button onPress={props.logout} title="Logout" backgroundColor="#6495ED" />
+    </Card>
   </View>
 );
 

@@ -7,7 +7,6 @@ import { createLogger } from 'redux-logger';
 
 import AppRoot from './containers';
 import reducer from './reducers';
-import { ActionCreators } from './actions';
 
 const loggerMiddleware = createLogger({
   predicate: (getState, action) => __DEV__,
@@ -20,9 +19,6 @@ const configureStore = (initialState) => {
 };
 
 const store = configureStore({});
-// setTimeout(() => {
-//   store.dispatch(ActionCreators.verifyAuth());
-// }, 3000);
 
 const App = () => <Provider store={store}><AppRoot /></Provider>;
 
