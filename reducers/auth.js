@@ -1,7 +1,12 @@
-import { AUTH_USER, SIGN_OUT_USER } from '../actions/types';
+import { AUTH_USER, SIGN_OUT_USER, LOGGING_IN } from '../actions/types';
 
-const login = (state = { isLoggedIn: false }, action) => {
+const login = (state = { isLoggedIn: false, isLoggingIn: false }, action) => {
   switch (action.type) {
+    case LOGGING_IN:
+      return {
+        ...state,
+        isLoggingIn: true,
+      };
     case AUTH_USER:
       return {
         ...state,
