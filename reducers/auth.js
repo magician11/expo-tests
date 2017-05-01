@@ -14,7 +14,7 @@ const login = (state = { isLoggedIn: false, isLoggingIn: false }, action) => {
         isLoggedIn: true,
       };
     case SIGN_OUT_USER:
-      return { ...state, isLoggedIn: false };
+      return { ...state, isLoggedIn: false, isLoggingIn: false };
     default:
       return state;
   }
