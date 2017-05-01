@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import { SocialIcon } from 'react-native-elements';
+import { Button } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { ActionCreators } from '../actions';
 
@@ -20,11 +20,10 @@ const styles = StyleSheet.create({
 const AuthScreen = props => (
   <View style={styles.container}>
     <Text style={styles.heading}>Please Login</Text>
-    <SocialIcon
-      title="Sign In With Facebook"
-      button
-      type="facebook"
+    <Button
+      title="Sign In With Google"
       onPress={props.login}
+      backgroundColor="#6495ED"
     />
   </View>
 );

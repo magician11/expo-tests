@@ -16,18 +16,32 @@ firebase.initializeApp(config);
 
 export const login = () => {
   return (dispatch) => {
-    Expo.Facebook
-      .logInWithReadPermissionsAsync('903647429646348', {
-        permissions: ['public_profile'],
+    // Facebook login method -- not working
+    // Expo.Facebook
+    //   .logInWithReadPermissionsAsync('903647429646348', {
+    //     permissions: ['public_profile'],
+    //   })
+    //   .then((result) => {
+    //     const credential = firebase.auth.FacebookAuthProvider.credential(
+    //       result.token,
+    //     );
+
+    // Google login method
+    Expo.Google
+      .logInAsync({
+        androidClientId: '721346052741-uogptmariln7m1sf1g8vr2b87gro8jfd.apps.googleusercontent.com',
+        iosClientId: '721346052741-61ct8rbk0idcrvh4cvkb37orhr3c9r0n.apps.googleusercontent.com',
+        scopes: ['profile', 'email'],
       })
       .then((result) => {
-        const credential = firebase.auth.FacebookAuthProvider.credential(
-          result.token,
+        const credential = firebase.auth.GoogleAuthProvider.credential(
+          result.idToken,
+          result.accessToken,
         );
         firebase
           .auth()
           .signInWithCredential(credential)
-          .then(user => dispatch({ type: AUTH_USER, user }));
+          .then(() => dispatch({ type: AUTH_USER, user: result.user }));
       })
       .catch((err) => {
         console.log('Error with logging in..');
